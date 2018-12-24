@@ -49,7 +49,7 @@ class BlockCard extends Component {
               <p>Block Reward: </p>
             </Col>
             <Col xs={12} md={9} lg={9}>
-              <p>{this.props.blockReward / (10**18)}</p>
+              <p>{this.props.blockReward}</p>
             </Col>
           </Row>
 
@@ -75,7 +75,7 @@ class BlockCard extends Component {
               <p>Uncles Inclusion Reward: </p>
             </Col>
             <Col xs={12} md={9} lg={9}>
-              <p>{this.props.uncleInclusionReward / (10**18)}</p>
+              <p>{this.props.uncleInclusionReward}</p>
             </Col>
           </Row>
         </div>

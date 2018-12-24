@@ -15,9 +15,9 @@ ReactDOM.render((
     <App>
       <Router history={history}>
         <Switch>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/address/:address" component={Dashboard} />
-        <Route exact path="/block/:block" component={BlockInfo} />
+          <Route exact path="/" component={Home} />
+          <Route exact path="/address/:address" component={Dashboard} />
+          <Route exact path="/block/:block" component={BlockInfo} />
         </Switch>
       </Router>
     </App>

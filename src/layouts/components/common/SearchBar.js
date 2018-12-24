@@ -14,23 +14,18 @@ class SearchBar extends Component {
     this.search = this.search.bind(this);
   }
 
-
   updateSearch(event) {
     this.setState({search: event.target.value});
   }
 
   search() {
     const search = this.state.search;
-    this.setState({search});
-    console.log("search= " + search);
 
     // check if search has basic requirements for account
     if (/^(0x)?[0-9a-f]{40}$/i.test(search)) {
-      console.log("hash")
-      this.props.history.push("address/" + this.state.search);
+      this.props.history.push("/address/" + search);
     } else if (search.match(/^\d+$/)) {
-      this.props.history.push("block/" + this.state.search)
-      console.log("block number")
+      this.props.history.push("/block/" + search);
     } else {
       alert("Yoooo fam, that's an incorrect address or block number")
     }
@@ -40,10 +35,12 @@ class SearchBar extends Component {
   render() {
     return (
       <div className="inputbox">
-        <input type="text"  onChange={this.updateSearch} placeholder="enter ethereum address or block number" name="address"/>
-        <button onClick={this.search}>
-          <div>go</div>
-        </button>
+        <form onSubmit={this.search}>
+          <input type="text"  onChange={this.updateSearch} placeholder="enter ethereum address or block number"/>
+          <button type="submit">
+            <div>go</div>
+          </button>
+        </form>
       </div>
 
     )
