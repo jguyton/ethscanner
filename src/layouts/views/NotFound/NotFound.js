@@ -16,7 +16,6 @@ class NotFound extends Component {
       <Wrapper>
         <div style={{height: '80%'}}>
           <section className='NotFound'>
-            <a href="/" className='NotFoundBtn'><button>Go to home</button></a>
           </section>
         </div>
       </Wrapper>
