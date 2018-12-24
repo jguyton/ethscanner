@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Grid, Row, Col } from 'react-bootstrap';
+import { Link } from "react-router-dom";
 
 import './blockcard.css'
 //components
@@ -40,7 +41,7 @@ class BlockCard extends Component {
               <p>Block Miner: </p>
             </Col>
             <Col xs={12} md={9} lg={9}>
-              <p>{this.props.blockMiner}</p>
+              <p><Link to={'/address/' + this.props.blockMiner}>{this.props.blockMiner}</Link></p>
             </Col>
           </Row>
           <Row>
@@ -48,7 +49,7 @@ class BlockCard extends Component {
               <p>Block Reward: </p>
             </Col>
             <Col xs={12} md={9} lg={9}>
-              <p>{this.props.blockReward}</p>
+              <p>{this.props.blockReward / (10**18)}</p>
             </Col>
           </Row>
 
@@ -57,12 +58,12 @@ class BlockCard extends Component {
               <p>Uncles: </p>
             </Col>
             <Col xs={12} md={9} lg={9}>
-              {this.props.uncles.map((uncle) => {
+              {this.props.uncles.map((uncle, index) => {
               return [
-                <div style={{lineHeight: '7px', paddingBottom: '10px'}}>
-                  <p>Miner: {uncle.miner}</p>
+                <div style={{lineHeight: '7px', paddingBottom: '10px'}} key={index}>
+                  <p>Miner: <Link to={'/address/' + uncle.miner}>{uncle.miner}</Link></p>
                   <p>Uncle Position: {uncle.unclePosition}</p>
-                  <p>Block Reward: {uncle.blockreward}</p>
+                  <p>Block Reward: {uncle.blockreward / (10**18)}</p>
                 </div>
               ]
               })}
@@ -74,7 +75,7 @@ class BlockCard extends Component {
               <p>Uncles Inclusion Reward: </p>
             </Col>
             <Col xs={12} md={9} lg={9}>
-              <p>{this.props.uncleInclusionReward}</p>
+              <p>{this.props.uncleInclusionReward / (10**18)}</p>
             </Col>
           </Row>
         </div>
