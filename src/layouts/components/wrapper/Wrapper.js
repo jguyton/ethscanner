@@ -22,7 +22,7 @@ class Wrapper extends Component {
 
   render() {
       return(
-        <div>
+        <div style={{height:'100%'}}>
           <Header />
             {Children.only(this.props.children)}
           <Footer />

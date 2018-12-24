@@ -8,6 +8,7 @@ import App from './App'
 import Home from './layouts/views/Home/Home'
 import Dashboard from './layouts/views/Dashboard/Dashboard'
 import BlockInfo from './layouts/views/BlockInfo/BlockInfo'
+import NotFound from './layouts/views/NotFound/NotFound'
 
 import './index.css'
 
@@ -18,6 +19,7 @@ ReactDOM.render((
           <Route exact path="/" component={Home} />
           <Route exact path="/address/:address" component={Dashboard} />
           <Route exact path="/block/:block" component={BlockInfo} />
+          <Route component={NotFound} />
         </Switch>
       </Router>
     </App>

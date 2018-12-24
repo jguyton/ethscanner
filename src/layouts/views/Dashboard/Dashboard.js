@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import API from '../../lib/api';
-import {withRouter } from 'react-router-dom';
 
 //components
 import Wrapper from '../../components/wrapper/Wrapper'
@@ -29,12 +28,17 @@ class Dashboard extends Component {
     Promise.all([
       API.getTranactions(this.state.search, this.state.page, this.state.offset, this.state.sort)
     ]).then(results => {
+      if (results[0].status === '0') {
+        alert('invalid address');
+        this.props.history.push("/");
 
-      const transactions = results[0].result;
+      } else {
+        const transactions = results[0].result;
+        this.setState({
+          transactions
+        });
+      }
 
-      this.setState({
-        transactions
-      });
     });
   }
 
@@ -88,4 +92,4 @@ class Dashboard extends Component {
   }
 }
 
-export default withRouter(Dashboard)
+export default Dashboard

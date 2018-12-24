@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import API from '../../lib/api';
-import {withRouter } from 'react-router-dom';
 
 //components
 import Wrapper from '../../components/wrapper/Wrapper'
@@ -25,13 +24,20 @@ class BlockInfo extends Component {
       API.getBlock(this.state.search)
     ]).then(results => {
 
-      const blockinfo = results[0].result;
-      const uncles = results[0].result.uncles;
+      if (results[0].status === '0') {
+        alert('invalid address');
+        this.props.history.push("/");
 
-      this.setState({
-        uncles,
-        blockinfo
-      });
+      } else {
+        const blockinfo = results[0].result;
+        const uncles = results[0].result.uncles;
+        this.setState({
+          uncles,
+          blockinfo
+        });
+      }
+
+
     });
   }
 
@@ -57,4 +63,4 @@ class BlockInfo extends Component {
   }
 }
 
-export default withRouter(BlockInfo)
+export default BlockInfo

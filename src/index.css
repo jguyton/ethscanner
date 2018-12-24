@@ -11,6 +11,9 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+#root, .App{
+  height: 100%;
+}
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
@@ -49,4 +52,27 @@ div.inputbox button {
 .filters button {
   background: transparent;
   border: none;
+}
+
+.NotFound {
+  background-image: url(./assets/404.gif);
+  /* Image source https://media.giphy.com/media/z9AUvhAEiXOqA/giphy.gif */
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 80% auto
+}
+
+.NotFoundBtn {
+  position: absolute;
+  top: 40%;
+  left: 45%;
+}
+.NotFoundBtn button {
+  background-color: blue;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  font-size: 16px;
+  border-radius: 16px;
 }
