@@ -19,7 +19,8 @@ class Dashboard extends Component {
       sort: "asc"
     };
 
-
+    this.incrementPage = this.incrementPage.bind(this);
+    this.decrementPage = this.decrementPage.bind(this);
     this.updateSearch = this.updateSearch.bind(this);
     this.search = this.search.bind(this);
   }
@@ -54,6 +55,22 @@ class Dashboard extends Component {
     }
   }
 
+  incrementPage() {
+    if (this.state.page < 10) {
+      this.setState({page: this.state.page + 1},function () {
+        this.componentDidMount();
+      });
+    }
+  }
+
+  decrementPage() {
+    if (this.state.page > 1) {
+      this.setState({page: this.state.page - 1},function () {
+        this.componentDidMount();
+      });
+    }
+  }
+
   render() {
     return (
       <Wrapper>
@@ -64,7 +81,13 @@ class Dashboard extends Component {
             <div>go</div>
           </button>
           </div>
-
+          <div className="container" style={{textAlign: 'right'}}>
+            Page: {this.state.page}
+            <div className="filters">
+              <button onClick={this.decrementPage}>&lt;</button>
+              <button onClick={this.incrementPage}>&gt;</button>
+            </div>
+          </div>
           {this.state.transactions.map((transaction, index) => {
 
           return [

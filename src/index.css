@@ -1,3 +1,7 @@
+html, body {
+  width: 100%;
+  height: 100%;
+}
 body {
   margin: 0;
   padding: 0;
@@ -11,4 +15,38 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+div.inputbox {
+  height: 50px;
+  margin: 20px 0 20px 0;
+  position: relative;
+  white-space: nowrap;
+}
+input[type="text"] {
+    width: 85%;
+    height: 50px;
+    padding: 0 50px 0 10px;
+    border-color: #777;
+    border-width: thin;
+}
+div.inputbox button {
+    position: absolute;
+    margin-left: -50px;
+    background: #777;
+    color: white;
+    border: 0;
+    font-size: 20px;
+    height: 50px;
+    width: 50px;
+}
+
+.filters {
+  display: inline;
+  padding: 10px;
+}
+
+.filters button {
+  background: transparent;
+  border: none;
 }
