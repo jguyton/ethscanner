@@ -22,7 +22,36 @@ async function getTranactions(address, page, offset, sort) {
     return result.json();
   });
 }
+async function getTranactionsCount(address) {
+  const params = {
+    module: "account",
+    action: "txlist",
+    address,
+    apikey: ETHSCAN_API_KEY
+  };
 
+  const eventAPIURL = new URL(ETHSCAN_API_URL)
+  eventAPIURL.search = new URLSearchParams(params)
+
+  return fetch(eventAPIURL).then(result => {
+    return result.json();
+  });
+}
+async function getAccountBalance(address) {
+  const params = {
+    module: "account",
+    action: "balance",
+    address,
+    apikey: ETHSCAN_API_KEY
+  };
+
+  const eventAPIURL = new URL(ETHSCAN_API_URL)
+  eventAPIURL.search = new URLSearchParams(params)
+
+  return fetch(eventAPIURL).then(result => {
+    return result.json();
+  });
+}
 async function getBlock(blockno) {
   const params = {
     module: "block",
@@ -41,6 +70,8 @@ async function getBlock(blockno) {
 
 const API = {
   getTranactions,
+  getTranactionsCount,
+  getAccountBalance,
   getBlock
 }
 export default API

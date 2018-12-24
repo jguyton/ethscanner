@@ -17,7 +17,9 @@ class Dashboard extends Component {
       search: props.match.params.address,
       page: 1,
       offset: 10,
-      sort: "asc"
+      sort: "asc",
+      count: 0,
+      balance: 0
     };
 
     this.incrementPage = this.incrementPage.bind(this);
@@ -26,24 +28,31 @@ class Dashboard extends Component {
 
   componentDidMount() {
     Promise.all([
-      API.getTranactions(this.state.search, this.state.page, this.state.offset, this.state.sort)
+      API.getTranactions(this.state.search, this.state.page, this.state.offset, this.state.sort),
+      API.getAccountBalance(this.state.search)
     ]).then(results => {
       if (results[0].status === '0') {
         alert('invalid address');
         this.props.history.push("/");
-
       } else {
         const transactions = results[0].result;
+        const balance = results[1].result
         this.setState({
-          transactions
+          transactions,
+          balance
         });
       }
 
     });
+
+    let totalcount = API.getTranactionsCount(this.state.search);
+    totalcount.then(results => {
+      this.setState({count: results.result.length});
+    });
   }
 
   incrementPage() {
-    if (this.state.page < 10) {
+    if (this.state.page < Math.ceil(this.state.count/10)) {
       this.setState({page: this.state.page + 1},function () {
         this.componentDidMount();
       });
@@ -64,6 +73,11 @@ class Dashboard extends Component {
         <div>
           <div style={{textAlign: 'center', margin: '5% 0 5% 0'}}>
             <SearchBar />
+          </div>
+          <div className="container" style={{fontSize: '16px', paddingLeft: '30px', wordWrap: 'break-word'}}>
+            <p>Ethereum Address: <strong>{this.state.search}</strong></p>
+            <p>Balance: <strong>{this.state.balance / (10**17)} ETH</strong></p>
+            <p>Total transactions: <strong>{this.state.count}</strong></p>
           </div>
           <div className="container" style={{textAlign: 'right'}}>
             Page: {this.state.page}

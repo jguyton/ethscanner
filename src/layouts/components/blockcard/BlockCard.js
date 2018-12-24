@@ -21,46 +21,46 @@ class BlockCard extends Component {
       <Grid>
         <div className="blockCard">
           <Row>
-            <Col xs={12} md={3} lg={3}>
+            <Col xs={6} sm={6} md={3} lg={3}>
               <p>Block Number: </p>
             </Col>
-            <Col xs={12} md={9} lg={9}>
+            <Col xs={6} sm={6} md={9} lg={9}>
               <p>{this.props.blockNumber}</p>
             </Col>
           </Row>
           <Row>
-            <Col xs={12} md={3} lg={3}>
+            <Col xs={6} sm={6} md={3} lg={3}>
               <p>Timestamp: </p>
             </Col>
-            <Col xs={12} md={9} lg={9}>
+            <Col xs={6} sm={6} md={9} lg={9}>
               <p>{this.props.timeStamp}</p>
             </Col>
           </Row>
           <Row>
-            <Col xs={12} md={3} lg={3}>
+            <Col xs={6} sm={6} md={3} lg={3}>
               <p>Block Miner: </p>
             </Col>
-            <Col xs={12} md={9} lg={9}>
+            <Col xs={6} sm={6} md={9} lg={9}>
               <p><Link to={'/address/' + this.props.blockMiner}>{this.props.blockMiner}</Link></p>
             </Col>
           </Row>
           <Row>
-            <Col xs={12} md={3} lg={3}>
+            <Col xs={6} sm={6} md={3} lg={3}>
               <p>Block Reward: </p>
             </Col>
-            <Col xs={12} md={9} lg={9}>
+            <Col xs={6} sm={6} md={9} lg={9}>
               <p>{this.props.blockReward}</p>
             </Col>
           </Row>
 
           <Row>
-            <Col xs={12} md={3} lg={3}>
+            <Col xs={6} sm={6} md={3} lg={3}>
               <p>Uncles: </p>
             </Col>
-            <Col xs={12} md={9} lg={9}>
+            <Col xs={6} sm={6} md={9} lg={9}>
               {this.props.uncles.map((uncle, index) => {
               return [
-                <div style={{lineHeight: '7px', paddingBottom: '10px'}} key={index}>
+                <div className='uncle' key={index}>
                   <p>Miner: <Link to={'/address/' + uncle.miner}>{uncle.miner}</Link></p>
                   <p>Uncle Position: {uncle.unclePosition}</p>
                   <p>Block Reward: {uncle.blockreward / (10**18)}</p>
@@ -71,10 +71,10 @@ class BlockCard extends Component {
           </Row>
 
           <Row>
-            <Col xs={12} md={3} lg={3}>
+            <Col xs={6} sm={6} md={3} lg={3}>
               <p>Uncles Inclusion Reward: </p>
             </Col>
-            <Col xs={12} md={9} lg={9}>
+            <Col xs={6} sm={6} md={9} lg={9}>
               <p>{this.props.uncleInclusionReward}</p>
             </Col>
           </Row>

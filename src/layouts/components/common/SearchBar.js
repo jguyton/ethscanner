@@ -36,7 +36,7 @@ class SearchBar extends Component {
     return (
       <div className="inputbox">
         <form onSubmit={this.search}>
-          <input type="text"  onChange={this.updateSearch} placeholder="enter ethereum address or block number"/>
+          <input type="text"  onChange={this.updateSearch} placeholder="enter eth address or block #"/>
           <button type="submit">
             <div>go</div>
           </button>

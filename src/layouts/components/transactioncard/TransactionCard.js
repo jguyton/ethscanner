@@ -26,28 +26,28 @@ class TransactionCard extends Component {
               </Col>
             </Row>
             <Row>
-              <Col xs={12} md={5} lg={5}>
+              <Col xs={6} sm={6} md={5} lg={5}>
                 <p>Block: &nbsp;
                   <a href={"/block/" + this.props.blockNumber}>
                     {this.props.blockNumber}
                   </a>
                 </p>
               </Col>
-              <Col xs={12} md={5} lg={5}>
+              <Col xs={6} sm={6} md={5} lg={5}>
                 <p>Time Stamp: {this.props.timeStamp}</p>
               </Col>
               <Col xs={12} md={2} lg={2}>
               </Col>
             </Row>
             <Row>
-              <Col xs={12} md={5} lg={5}>
+              <Col xs={6} sm={6} md={5} lg={5}>
                 <p>From: &nbsp;
                   <a href={"/address/" + this.props.from}>
                     {this.props.from}
                   </a>
                 </p>
               </Col>
-              <Col xs={12} md={5} lg={5}>
+              <Col xs={6} sm={6} md={5} lg={5}>
                 <p>To: &nbsp;
                   <a href={"/address/" + this.props.to}>
                     {this.props.to}
