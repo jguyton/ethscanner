@@ -26,7 +26,7 @@ export default class Header extends React.Component {
         <Navbar.Header>
           <Navbar.Brand>
             <a href="/" style={{textTransform: 'uppercase', fontSize: 16, letterSpacing: 4}}>
-              Airswap Coding Challenge
+              ETH Scanner
             </a>
           </Navbar.Brand>
         </Navbar.Header>
